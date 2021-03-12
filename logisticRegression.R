@@ -47,7 +47,7 @@ points(set, pch = 21, bg = ifelse(set[, 3] == 1, 'green4', 'red3'))
 
 #Visualising the test set result
 library(ElemStatLearn)
-set= training_set
+set= test_set
 x1 = seq(min(set[,1])-1,max(set[,1])+1,by = 0.01)
 x2 = seq(min(set[,2])-1, max(set[,2])+1,by=0.01)
 grid_set = expand.grid(x1,x2)
@@ -55,7 +55,7 @@ colnames(grid_set) = c('Age','EstimatedSalary')
 prob_set = predict(classifier,type='response',
                    newdata=grid_set)
 y_grid = ifelse(prob_set > 0.5,1,0)
-plot(set[,-3],main='Logistic Regression(Training Set)',
+plot(set[,-3],main='Logistic Regression(Test Set)',
      xlab = 'Age',
      ylab = 'EstimatedSalary',
      xlim = range(x1),
